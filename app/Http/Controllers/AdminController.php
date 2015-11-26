@@ -13,6 +13,7 @@ class AdminController extends Controller {
     {
         //make sure user is authenticated else redirect to login
         $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     public function adminPage(){

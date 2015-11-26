@@ -15,7 +15,10 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('editProfile','HomeController@editProfile');
+Route::get('editprofile','HomeController@editProfile');
+Route::post('saveprofile','HomeController@saveProfile');
+Route::post('saveprofilepic','HomeController@savePicture');
+Route::post('saveaboutme','HomeController@saveAboutMe');
 
 Route::get('admin','AdminController@adminPage');
 Route::post('admin', 'AdminController@updateRoles');

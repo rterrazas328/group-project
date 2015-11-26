@@ -46,7 +46,7 @@
 
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="home">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="editProfile">Edit Profile</a></li>
+                        <li><a href="editprofile">Edit Profile</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::user()['userlevel'] == 1)
