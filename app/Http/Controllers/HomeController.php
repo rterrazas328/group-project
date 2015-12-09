@@ -39,7 +39,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		return view('home', ['page_name' => 'home']);
 	}
 
 	public function editProfile(){
@@ -47,7 +47,7 @@ class HomeController extends Controller {
 
 		$user = User::find($userID);
 
-		$profile = [ 'name' => $user->name, 'last' => $user->last, 'user' => $user->user, 'email' => $user->email ];
+		$profile = [ 'page_name' => 'profile', 'name' => $user->name, 'last' => $user->last, 'user' => $user->user, 'email' => $user->email ];
 
 		$userProfile = UserProfile::find($userID);
 

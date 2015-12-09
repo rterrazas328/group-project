@@ -33,7 +33,7 @@ class WelcomeController extends Controller {
 	{
 		//db works!
 		//print_r(DB::select('SELECT USER()'));
-		return view('home');
+		return view('home', ['page_name' => 'home']);
 	}
 
 }

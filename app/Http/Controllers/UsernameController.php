@@ -19,7 +19,7 @@ class UsernameController extends Controller{
 
     public function getIndex()
     {
-        return view('auth.username');
+        return view('auth.username', [ 'page_name' => 'username']);
     }
 
     public function postIndex(Request $request)
@@ -35,10 +35,10 @@ class UsernameController extends Controller{
 
                 $message->to($userEmail['email'])->subject('User Name Retrieval!');
             });
-            return view('auth.login');
+            return view('auth.login', [ 'page_name' => 'login']);
         }
         else{
-            return view('auth.username');
+            return view('auth.username', [ 'page_name' => 'username']);
         }
 
     }

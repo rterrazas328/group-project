@@ -20,7 +20,7 @@ class AdminController extends Controller {
 
         $userlist = DB::select('SELECT * from users');
 
-        return view('admin', ['data' => $userlist]);
+        return view('admin', ['data' => $userlist, 'page_name' => 'admin']);
     }
 
     public function updateRoles(){
@@ -65,14 +65,11 @@ class AdminController extends Controller {
 
             DB::update($makeUserQuery, $userRoles);
         }
-
-
-
         //then display page
 
         $userlist = DB::select('SELECT * from users');
 
-        return view('admin', ['data' => $userlist]);
+        return view('admin', ['data' => $userlist, 'page_name' => 'admin']);
     }
 
 }
