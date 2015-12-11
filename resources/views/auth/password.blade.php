@@ -27,6 +27,7 @@
 
 		<form id="form-signup_v1" name="form-signup_v1" method="POST" action="/password/email" class="validation-form-container col-md-4 col-md-offset-4" align="center">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" name="honeypot" value="IS-421-RRZ" />
 			</br>
 			<div class="field">
 				<label for="email">Email</label>

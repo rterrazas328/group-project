@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-use Request;
+use RequestF;
 use DB;
 
 class AdminController extends Controller {
@@ -25,7 +25,7 @@ class AdminController extends Controller {
 
     public function updateRoles(){
         //first update roles in DB
-        $data=Request::all();
+        $data=RequestF::all();
 
         $adminRoles = array();//1
         $userRoles = array();//0
@@ -44,7 +44,7 @@ class AdminController extends Controller {
                 }
             }
         }
-
+        //update all selected admins
         if(count($adminRoles) > 0){
             $makeAdminQuery = "update users set userlevel = 1 where id =";
 
@@ -55,6 +55,7 @@ class AdminController extends Controller {
 
             DB::update($makeAdminQuery, $adminRoles);
         }
+        //update all selected users
         if(count($userRoles) > 0){
             $makeUserQuery = "update users set userlevel = 0 where id =";
 

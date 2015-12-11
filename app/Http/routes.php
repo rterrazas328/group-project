@@ -11,21 +11,25 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'GuestController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', 'UserController@index');
 
-Route::get('editprofile','HomeController@editProfile');
-Route::post('saveprofile','HomeController@saveProfile');
-Route::post('saveprofilepic','HomeController@savePicture');
-Route::post('saveaboutme','HomeController@saveAboutMe');
+Route::get('profile','UserController@getProfile');
+Route::post('saveprofile','UserController@saveProfile');
+Route::post('saveprofilepic','UserController@savePicture');
+Route::post('saveaboutme','UserController@saveAboutMe');
+
 
 Route::get('admin','AdminController@adminPage');
 Route::post('admin', 'AdminController@updateRoles');
 
-Route::get('username', 'UsernameController@getIndex');
-Route::post('username', 'UsernameController@postIndex');
+Route::get('tracks', 'MusicController@getTracks');
+Route::get('playlists', 'MusicController@getPlaylists');
+Route::get('createplaylist', 'MusicController@getCreatePlaylist');
 
+Route::get('username', 'GuestController@getUserName');
+Route::post('username', 'GuestController@postUserName');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

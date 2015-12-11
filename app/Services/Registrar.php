@@ -16,6 +16,7 @@ class Registrar implements RegistrarContract {
 	{
 		//print_r($data);
 		return Validator::make($data, [
+			'honeypot' => 'required|in:IS-421-RRZ',
 			'signup-v1-firstname' => 'required|max:32',
 			'signup-v1-lastname' => 'required|max:32',
 			'signup-v1-username' => 'required|max:100',//unique

@@ -2,13 +2,15 @@
 
 use App\UserProfile;
 use App\User;
-use Request;
+use RequestF;
+use Validator;
+use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Storage;
 
-class HomeController extends Controller {
+class UserController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ class HomeController extends Controller {
 		return view('home', ['page_name' => 'home']);
 	}
 
-	public function editProfile(){
+	public function getProfile(){
 		$userID = Auth::user()['id'];
 
 		$user = User::find($userID);
@@ -72,10 +74,25 @@ class HomeController extends Controller {
 			$profile['about_me'] = '';
 		}
 
-		return view('editprofile', $profile);
+		return view('profile', $profile);
 	}
 
 	public function saveProfile(Request $request){
+
+		$this->validate($request, [
+			'honeypot' => 'required|in:IS-421-RRZ',
+			'firstname' => 'alpha|between:2,30',
+			'lastname' => 'alpha|between:2,30',
+			'username' => 'alpha_dash|between:4,30',
+			'address' => 'string|between:2,30',
+			'city' => 'alpha|between:2,30',
+			'state' => 'alpha|between:2,20',
+			'country' => 'alpha|between:2,30',
+			'bday' => 'date',
+			'phone' => 'alpha_dash|between:7,25',
+			'email' => 'email|max:50',
+		]);
+
 		$userID = Auth::user()['id'];
 		$user = User::find($userID);
 		$userProfile = UserProfile::find($userID);
@@ -85,29 +102,35 @@ class HomeController extends Controller {
 		}
 		//fill in fields
 		$userProfile->id = $userID;
-		$user->name = Request::input('firstname');
-		$user->last = Request::input('lastname');
-		$user->user = Request::input('username');
-		$userProfile->address = Request::input('address');
-		$userProfile->city = Request::input('city');
-		$userProfile->state = Request::input('state');
-		$userProfile->country = Request::input('country');
-		$userProfile->birthdate = Request::input('bday') == '' ?  null : Request::input('bday');
-		$userProfile->phone = Request::input('phone');
-		$user->email = Request::input('email');
+		$user->name = RequestF::input('firstname');
+		$user->last = RequestF::input('lastname');
+		$user->user = RequestF::input('username');
+		$userProfile->address = RequestF::input('address');
+		$userProfile->city = RequestF::input('city');
+		$userProfile->state = RequestF::input('state');
+		$userProfile->country = RequestF::input('country');
+		$bday = RequestF::input('bday') == '' ?  null : RequestF::input('bday');
+		$userProfile->birthdate = $bday == null ? null : date("Y-m-d", strtotime($bday));
+
+		$userProfile->phone = RequestF::input('phone');
+		$user->email = RequestF::input('email');
 
 		//insert the rows
 		$user->save();
 		$userProfile->save();
 
-		return new RedirectResponse(url('/editprofile'));
+		return new RedirectResponse(url('/profile'));
 	}
 
 	public function savePicture(Request $request){
+		$this->validate($request, [
+			'image' => 'image|max:5000'
+		]);
+
 		$userID = Auth::user()['id'];
 
-		if (Request::hasFile('image')){
-			$file = Request::file('image');
+		if (RequestF::hasFile('image')){
+			$file = RequestF::file('image');
 			if ($file->isValid()){
 				$target_dir = "pictures/".$userID;
 				//check if /storage/app/pictures/userid is a real directory that exists
@@ -131,15 +154,20 @@ class HomeController extends Controller {
 					$userProfile->profile_picture = storage_path() . "/app/" . $target_dir . "/" . $file->getClientOriginalName();
 
 					$userProfile->save();
-					return new RedirectResponse(url('/editprofile'));
+					return new RedirectResponse(url('/profile'));
 				}
 			}
 		}
 
-		return new RedirectResponse(url('/editprofile'));
+		return new RedirectResponse(url('/profile'));
 	}
 
 	public function saveAboutMe(Request $request){
+		$this->validate($request, [
+			'aboutme' => 'string|max:500',
+		]);
+
+
 		$userID = Auth::user()['id'];
 		$userProfile = UserProfile::find($userID);
 		if($userProfile == null){
@@ -149,9 +177,10 @@ class HomeController extends Controller {
 		}
 
 		//fill in fields
-		$userProfile->about_me = Request::input('aboutme');
+		$userProfile->about_me = RequestF::input('aboutme');
 		$userProfile->save();
-		return new RedirectResponse(url('/editprofile'));
+		return new RedirectResponse(url('/profile'));
 	}
+
 
 }

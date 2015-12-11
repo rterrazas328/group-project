@@ -18,83 +18,36 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/template.css" rel="stylesheet">
     <link href="/css/cover.css" rel="stylesheet">
-
+    <!--Sets titles and scripts for each page-->
     @if($page_name == "admin")
         <title>Administrator Page</title>
+    @elseif($page_name == "main")
+        <title>Welcome</title>
     @elseif($page_name == "profile")
         <title>Profile Page</title>
         <script src="/js/validate.js"></script>
     @elseif($page_name == "login")
         <title>Login Page</title>
-        <link href="/css/jquery.validation.css" rel="stylesheet" >
-        <script src="/js/jquery.validation.js"></script>
-        <script>
-            $('#form-signup_v1').validate();
-        </script>
+        <link rel="stylesheet" href="/css/validation.css" />
+        <script type="text/javascript" src="/js/livevalidation_standalone.js"></script>
+        <script type="text/javascript" src="/js/login.js"></script>
     @elseif($page_name == "home")
         <title>Home Page</title>
         <script type="text/javascript" src="/js/script.js"></script>
     @elseif($page_name == "password")
         <title>Email Password Reset Link</title>
-        <link href="/css/jquery.validation.css" rel="stylesheet" >
-        <script src="/js/jquery.validation.js"></script>
-        <script>
-            $('#form-signup_v1').validate();
-        </script>
     @elseif($page_name == "reset")
         <title>Reset Your Password</title>
     @elseif($page_name == "register")
         <title>Register Your Own Account</title>
-        <link rel="stylesheet" href="jquery.validation.css">
-        <link rel="stylesheet" href="/css/jquery.mobile-1.3.2.min.css"/>
         <link rel="stylesheet" href="/css/validation.css" />
         <script type="text/javascript" src="/js/livevalidation_standalone.js"></script>
-        <script src="/js/jquery.validation.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
-        <script>
-            $('#form-signup_v1').validate({
-                submit: {
-                    settings: {
-                        inputContainer: '.field'
-                    },
-                    callback: {
-                        onBeforeSubmit: function (node) {
-                            myBeforeSubmitFunction(':D', ':)', node);
-                        },
-                        onSubmit: function (node) {
-                            console.log('#' + node.id + ' has a submit override.');
-                            //node.submit();
-                        }
-                    }
-                },
-                debug: true
-            });
-            function myBeforeSubmitFunction(a, b, node) {
-                console.log(a, b);
-                $(node).find('input:not([type="submit"]), select, textarea').attr('readonly', 'true');
-                $(node).append('<div class="ui active loader"></div>');
-            }
-            $('#prefill-signup_v1').on('click', function () {
-                var form = $(this).closest('form');
-                form.find('#signup_v1-firstname').val('John');
-                form.find('#signup_v1-lastname').val('Doe');
-                form.find('#signup_v1-username').val('RocketJoe');
-                form.find('#signup_v1-password').val('test123');
-                form.find('#signup_v1-password-confirm').val('test123');
-                form.find('#signup_v1-email').val('test@test.test');
-                form.find('#signup_v1-email-confirm').val('test@test.test');
-            });
-        </script>
     @elseif($page_name == "username")
         <title>Retrieve Username</title>
-        <link href="/css/jquery.validation.css" rel="stylesheet" >
-        <script src="js/jquery.validation.js"></script>
-        <script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>
-        <script src="http://w3resource.com/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>
-
-        <script>
-            $('#form-signup_v1').validate();
-        </script>
+    @elseif($page_name == "tracks")
+        <title>Your Music</title>
+        <script src="/js/mytracklist.js" ></script>
     @endif
 </head>
 
@@ -113,7 +66,7 @@
                     @if(Auth::check())
                         <img id="brand-image" class="img-circle" src="/img/icon.png"/>
                     @else
-                        Company Name
+                        MyUsic
                     @endif
                 </a>
             </div>
@@ -122,7 +75,7 @@
 
                     <ul class="nav navbar-nav">
                         <li id="homePage"><a href="home">Home</a></li>
-                        <li id="profilePage"><a href="editprofile">Edit Profile</a></li>
+                        <li id="profilePage"><a href="profile">Profile</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::user()['userlevel'] == 1)
@@ -133,6 +86,7 @@
                 @else
                     <ul class="nav navbar-nav">
                         <li id="homePage"><a href="/">Home</a></li>
+                        <li id="loginPage"><a href="/auth/login">Login</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li id="registerPage"><a href="/auth/register"><u>Sign Up</u></a></li>
@@ -150,13 +104,13 @@
                         </script>
                     @elseif($page_name == "login")
                         <script>
-                            $("#homePage").addClass("active");
-                            $("#adminPage a").append("<span class='sr-only'>(current)</span>");
+                            $("#loginPage").addClass("active");
+                            $("#loginPage a").append("<span class='sr-only'>(current)</span>");
                         </script>
-                    @elseif($page_name == "home")
+                    @elseif($page_name == "home" || $page_name == "main")
                         <script>
                             $("#homePage").addClass("active");
-                            $("#adminPage a").append("<span class='sr-only'>(current)</span>");
+                            $("#homePage a").append("<span class='sr-only'>(current)</span>");
                         </script>
                     @elseif($page_name == "password")
 
