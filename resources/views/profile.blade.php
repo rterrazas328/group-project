@@ -26,7 +26,7 @@
                                             @if( !isset($profile_picture))
                                                 <img class="img-responsive" src="/img/icon.png" alt="">
                                             @else
-                                                <img class="img-responsive" src="{{ $profile_picture }}" alt="">
+                                                <img class="img-responsive" src="/image" alt="/img/icon.png">
                                             @endif
                                         </a>
                                         <input id="imageprofile" name="image" type="file" accept="image/*" />

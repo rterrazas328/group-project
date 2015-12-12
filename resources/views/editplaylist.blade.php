@@ -9,7 +9,7 @@
         </div>
         <div class="container-fluid">
             <div class="panel panel-default table-responsive">
-                <h3>Create Playlist</h3>
+                <h3>Edit Playlist</h3>
             </div>
         </div>
         <div class="panel-body">
@@ -23,38 +23,42 @@
                     </ul>
                 </div>
             @endif
-            <form action="/saveplaylist" method="POST" id="form" name="form" role="form">
+            <form action="{{ "/saveplaylist/" . $playlistID }}" method="POST" id="form" name="form" role="form">
                 <input type="hidden" name="_token" value='{{ csrf_token() }}'>
             </form>
             <div class="col-xs-4">
                 <label for="playlistname">Playlist Name:</label>
-                <input class="form-control" id="playlistname" name="playlistName" placeholder="Enter Playlist Name" type="text" form="form"><br>
+                <input class="form-control" id="playlistname" name="playlistName" value='{{ $playlistName }}' placeholder="Enter Playlist Name" type="text" form="form"><br>
             </div>
             <br>
             <br>
             <table class="table table-striped table-bordered table-hover table-condensed">
                 <thead>
-                    <th>Select</th>
-                    <th>Artist/Band</th>
-                    <th>Track Name</th>
-                    <th>Genre</th>
-                    <th>Play Track</th>
+                <th>Select</th>
+                <th>Artist/Band</th>
+                <th>Track Name</th>
+                <th>Genre</th>
+                <th>Play Track</th>
                 </thead>
-                @foreach($data as $track)
+                @foreach($data as $status => $track)
                     <tr>
                         <td>
-                            <input id="{{ $track->id }}" name="{{ $track->id }}" class="form-control" form="form" type="checkbox">
+                            @if(explode("_",$status)[1] == "on")
+                                <input id="{{ $track->id }}" name="{{ $track->id }}" class="form-control" form="form" type="checkbox" checked>
+                            @else
+                                <input id="{{ $track->id }}" name="{{ $track->id }}" class="form-control" form="form" type="checkbox">
+                            @endif
                         </td>
                         <td>{{ $track->authors }}</td>
                         <td>{{ $track->song_name }}</td>
                         <td>{{ $track->genre }}</td>
-                        <td><audio controls> <source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+                        <td><audio controls><source src="{{ "audio/".$track->id }}" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
                     </tr>
                 @endforeach
             </table>
             <div class="row">
                 <div class="col-md-1">
-                    <input class="form-control btn btn-success" type="submit" form="form" value="Create">
+                    <input class="form-control btn btn-success" type="submit" form="form" value="Save">
                 </div>
             </div>
         </div>

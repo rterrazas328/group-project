@@ -2,14 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Track extends Model {
+class Band extends Model {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'music';
+    protected $table = 'bands';
 
 
 
@@ -20,7 +20,7 @@ class Track extends Model {
      *
      * @var array
      */
-    protected $fillable = ['band_id', 'song_name', 'authors', 'genre', 'file_path'];
+    protected $fillable = ['id', 'total_followers', 'band_name', 'active'];
 
     /**
      * The attributes excluded from the model's JSON form.

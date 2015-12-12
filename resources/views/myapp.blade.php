@@ -64,7 +64,7 @@
                 </button>
                 <a class="navbar-brand " href="#">
                     @if(Auth::check())
-                        <img id="brand-image" class="img-circle" src="/img/icon.png"/>
+                        <img id="brand-image" class="img-circle" src="/image"/>
                     @else
                         MyUsic
                     @endif
@@ -74,12 +74,14 @@
                 @if(Auth::check())
 
                     <ul class="nav navbar-nav">
-                        <li id="homePage"><a href="home">Home</a></li>
-                        <li id="profilePage"><a href="profile">Profile</a></li>
+                        <li id="homePage"><a href="/home">Home</a></li>
+                        <li id="profilePage"><a href="/profile">Profile</a></li>
+                        <li id="tracksPage"><a href="/tracks">Tracks</a></li>
+                        <li id="playlistsPage"><a href="/playlists">Playlists</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::user()['userlevel'] == 1)
-                            <li id="adminPage"><a href="admin">Admin</a></li>
+                            <li id="adminPage"><a href="/admin">Admin</a></li>
                         @endif
                         <li id="logoutPage"><a href="/auth/logout"><u>Logout</u></a></li>
                     </ul>
@@ -111,6 +113,16 @@
                         <script>
                             $("#homePage").addClass("active");
                             $("#homePage a").append("<span class='sr-only'>(current)</span>");
+                        </script>
+                    @elseif($page_name == "tracks")
+                        <script>
+                            $("#tracksPage").addClass("active");
+                            $("#tracksPage a").append("<span class='sr-only'>(current)</span>");
+                        </script>
+                    @elseif($page_name == "playlists")
+                        <script>
+                            $("#playlistsPage").addClass("active");
+                            $("#playlistsPage a").append("<span class='sr-only'>(current)</span>");
                         </script>
                     @elseif($page_name == "password")
 

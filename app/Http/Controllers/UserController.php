@@ -3,8 +3,8 @@
 use App\UserProfile;
 use App\User;
 use RequestF;
-use Validator;
 use Illuminate\Http\Request;
+use Validator;
 use DB;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -132,9 +132,9 @@ class UserController extends Controller {
 		if (RequestF::hasFile('image')){
 			$file = RequestF::file('image');
 			if ($file->isValid()){
-				$target_dir = "pictures/".$userID;
-				//check if /storage/app/pictures/userid is a real directory that exists
-				if(!is_dir($file)){
+				$target_dir = "images/".$userID;
+				//check if /storage/app/images/userid is a real directory that exists
+				if(!is_dir($target_dir)){
 					Storage::makeDirectory($target_dir);
 				}
 				//should be try catch not if else

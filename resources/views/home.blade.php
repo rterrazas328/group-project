@@ -14,18 +14,19 @@
 				<div class="col-sm-4" style="background-color:#696969;">
 					<br>
 
-					<div class="item">
-						<img class="avatar" src="/img/icon.png" />
-						<strong class="name">Username</strong>
+					<div class="col-md-10 col-md-offset-1">
+						<a href="profile" class="thumbnail" >
+							<img class="avatar" src="/image" />
+						</a>
+						<strong class="name"></strong>
 						<span class="button following">Following</span>
 						<br>
 						<br>
+						<button type="button" class="btn btn-primary"><a href="/playlists">Playlists</a></button>
 						<br>
 						<br>
-						<button type="button" class="btn btn-primary"><a href="playlists">Playlists</a></button>
+						<button type="button" class="btn btn-danger"><a href="/tracks">Tracks</a></button>
 						<br>
-						<br>
-						<button type="button" class="btn btn-danger"><a href="tracks">Tracks</a></button>
 						<br>
 					</div>
 					<br>
@@ -50,7 +51,7 @@
 							<td><a href="PlayListSongs.html">Jay Z</a></td>
 							<td>Pound Cake</td>
 							<td>Hip Hop</td>
-							<td><audio controls> <source src="horse.ogg" type="audio/ogg"><source src="horse.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+							<td><audio controls> <source src="/music/vas.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
 						</tr>
 					</table>
 				</div>
