@@ -124,7 +124,7 @@ class UserController extends Controller {
 
 	public function savePicture(Request $request){
 		$this->validate($request, [
-			'image' => 'image|max:5000'
+			'image' => 'image|max:8000'
 		]);
 
 		$userID = Auth::user()['id'];
@@ -145,7 +145,7 @@ class UserController extends Controller {
 					//now save entire filepath to DB
 					$userProfile = UserProfile::find($userID);
 
-					//$file = $request->input('image');
+					$file = RequestF::file('image');
 					if($userProfile == null) {
 						$userProfile = new UserProfile;
 						$userProfile->id = $userID;

@@ -28,9 +28,9 @@
 			<input type="hidden" name="honeypot" value="IS-421-RRZ" />
 			<div class="form-group">
 				<div class="field">
-					<label for="signup_v1-username">First Name</label>
-					<input id="signup_v1-firstname"
-						   name="signup_v1[firstname]"
+					<label for="signup-v1-username">First Name</label>
+					<input id="signup-v1-firstname"
+						   name="signup-v1-firstname"
 						   type="text"
 						   class="form-control"
 						   data-validation="[L>=2]"
@@ -38,49 +38,49 @@
 
 				</div>
 				<div class="field">
-					<label for="signup_v1-username">Last Name</label>
-					<input id="signup_v1-lastname"
-						   name="signup_v1[lastname]"
+					<label for="signup-v1-username">Last Name</label>
+					<input id="signup-v1-lastname"
+						   name="signup-v1-lastname"
 						   type="text"
 						   class="form-control"
 						   data-validation="[L>=2]"
 						   data-validation-message="$ must be at least 2 characters">
 				</div>
 				<div class="field">
-					<label for="signup_v1-username">Username</label>
-					<input id="signup_v1-username"
-						   name="signup_v1[username]"
+					<label for="signup-v1-username">Username</label>
+					<input id="signup-v1-username"
+						   name="signup-v1-username"
 						   type="text"
 						   class="form-control"
 						   data-validation="[L>=6, L<=18, MIXED]"
 						   data-validation-message="$ must be between 6 and 18 characters. No special characters allowed." >
 				</div>
 				<div class="field">
-					<label for="signup_v1-password">Password</label>
-					<input id="signup_v1-password"
-						   name="signup_v1[password]"
+					<label for="signup-v1-password">Password</label>
+					<input id="signup-v1-password"
+						   name="signup-v1-password"
 						   type="password"
 						   class="form-control" >
 				</div>
 				<div class="field">
-					<label for="signup_v1-password-confirm">Confirm Password</label>
-					<input id="signup_v1-password-confirm"
-						   name="signup_v1[password-confirm]"
+					<label for="signup-v1-password_confirmation">Confirm Password</label>
+					<input id="signup-v1-password_confirmation"
+						   name="signup-v1-password_confirmation"
 						   type="password"
 						   class="form-control" >
 				</div>
 				<div class="field">
-					<label for="signup_v1-email">Email</label>
-					<input id="signup_v1-email"
-						   name="signup_v1[email]"
+					<label for="signup-v1-email">Email</label>
+					<input id="signup-v1-email"
+						   name="signup-v1-email"
 						   type="text"
 						   class="form-control"
 						   data-validation="[EMAIL]">
 				</div>
 				<div class="field">
-					<label for="signup_v1-email-confirm">Confirm Email</label>
-					<input id="signup_v1-email-confirm"
-						   name="signup_v1[email-confirm]"
+					<label for="signup-v1-email_confirmation">Confirm Email</label>
+					<input id="signup-v1-email_confirmation"
+						   name="signup-v1-email_confirmation"
 						   type="text"
 						   class="form-control"
 						   data-validation="[V==signup_v1[email]]"
