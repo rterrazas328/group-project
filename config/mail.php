@@ -33,7 +33,7 @@ return [
 
 	'mailgun' => [
 		'domain' => 'appbb358a9968284b398abe04c841d548e0.mailgun.org',
-		'secret' => 'key-de2665d80dfb1d9da8a5547b5b7faa0a',
+		'secret' => 'pubkey-610545dd61ea83d9d240b8f5c9c47b90',
 	],
 
 	/*
@@ -86,7 +86,7 @@ return [
 	|
 	*/
 
-	'login' => 'postmaster@appbb358a9968284b398abe04c841d548e0.mailgun.org',
+	'username' => 'postmaster@appbb358a9968284b398abe04c841d548e0.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
