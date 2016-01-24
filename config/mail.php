@@ -31,11 +31,6 @@ return [
 	'host' => 'smtp.mailgun.org',
 
 
-	'mailgun' => [
-		'domain' => 'appbb358a9968284b398abe04c841d548e0.mailgun.org',
-		'secret' => 'key-de2665d80dfb1d9da8a5547b5b7faa0a',
-	],
-
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -86,7 +81,7 @@ return [
 	|
 	*/
 
-	'username' => 'postmaster',
+	'username' => 'postmaster@appbb358a9968284b398abe04c841d548e0.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
