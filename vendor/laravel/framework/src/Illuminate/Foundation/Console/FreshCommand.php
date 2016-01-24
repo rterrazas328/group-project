@@ -40,7 +40,7 @@ class FreshCommand extends Command {
 		$files->deleteDirectory(app_path('Http/Controllers/Auth'));
 		$files->deleteDirectory(base_path('resources/views/auth'));
 		$files->deleteDirectory(base_path('resources/views/emails'));
-		$files->delete(app_path('Http/Controllers/UserController.php'));
+		$files->delete(app_path('Http/Controllers/HomeController.php'));
 
 		$files->deleteDirectory(base_path('public/css'));
 		$files->deleteDirectory(base_path('public/fonts'));

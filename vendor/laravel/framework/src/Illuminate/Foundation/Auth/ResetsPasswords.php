@@ -28,7 +28,7 @@ trait ResetsPasswords {
 	 */
 	public function getEmail()
 	{
-		return view('auth.password', [ 'page_name' => 'password']);
+		return view('auth.password', ['page_name' => 'password']);
 	}
 
 	/**
@@ -39,7 +39,7 @@ trait ResetsPasswords {
 	 */
 	public function postEmail(Request $request)
 	{
-		$this->validate($request, ['email' => 'required|email', 'honeypot' => 'required|in:IS-421-RRZ']);
+		$this->validate($request, ['email' => 'required|email']);
 
 		$response = $this->passwords->sendResetLink($request->only('email'), function($m)
 		{
@@ -79,7 +79,7 @@ trait ResetsPasswords {
 			throw new NotFoundHttpException;
 		}
 
-		return view('auth.reset', [ 'page_name' => 'reset', 'token' => $token]);
+		return view('auth.reset', ['page_name' => 'reset'])->with('token', $token);
 	}
 
 	/**
