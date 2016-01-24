@@ -86,7 +86,7 @@ return [
 	|
 	*/
 
-	'username' => 'postmaster@appbb358a9968284b398abe04c841d548e0.mailgun.org',
+	'login' => 'postmaster@appbb358a9968284b398abe04c841d548e0.mailgun.org',
 
 	/*
 	|--------------------------------------------------------------------------
